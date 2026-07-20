@@ -1,0 +1,24 @@
+generated: '2026-07-18'
+method: searched
+source: https://superpenguin.ai/docs
+docs: https://superpenguin.ai/docs
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - sdk
+  oauth2_flows: []
+schemes:
+- name: SuperPenguinApiKey
+  type: apiKey
+  in: sdk
+  key_prefix: "sp-"
+  env_var: SP_API_KEY
+  init: 'sp.init(api_key="sp-...")'
+  provisioning: https://app.superpenguin.ai/proxies
+  notes: >-
+    API keys are created in the dashboard at app.superpenguin.ai/proxies and are
+    shown only once. Keys are passed to the SDK via sp.init(api_key=...) or the
+    SP_API_KEY environment variable. Keys must be kept server-side for
+    TypeScript/JavaScript applications. No OAuth2 or OpenID Connect surface is
+    documented; the SuperPenguin backend does not publish an OpenAPI spec.
