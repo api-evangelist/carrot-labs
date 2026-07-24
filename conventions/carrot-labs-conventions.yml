@@ -1,0 +1,54 @@
+generated: '2026-07-18'
+method: searched
+source: https://superpenguin.ai/docs
+docs: https://superpenguin.ai/docs
+authentication:
+  style: api-key
+  key_prefix: "sp-"
+  env_var: SP_API_KEY
+  ref: authentication/carrot-labs-authentication.yml
+idempotency:
+  supported: true
+  mechanism: dedup-key
+  scope: batch-ingestion
+  detail: >-
+    Batch cost-tracking calls (track_openai_batch(), track_anthropic_batch(),
+    track_google_batch()) accept idempotent deduplication keys so re-submitting
+    the same batch does not double-count spend. Individual wrapped calls are
+    logged with per-request identity and cost metadata.
+metadata:
+  supported: true
+  fields:
+  - customer_id
+  - feature
+  - team
+  - environment
+  - prompt_key
+  - prompt_version
+  detail: >-
+    Optional attribution metadata is attached per request to slice spend by
+    customer, feature, team, environment, and prompt version.
+capture:
+  content_stored_by_default: false
+  detail: >-
+    By default only cost metadata (tokens, model, latency, tags) is captured;
+    prompt and response text are not stored unless the org opts in (Pro/Enterprise)
+    to sampled, encrypted, text-only capture.
+performance:
+  non_streaming_overhead: "<10ms"
+  streaming_ttft_impact: "<5ms"
+  telemetry: async
+pagination:
+  documented: false
+rate_limiting:
+  documented: false
+versioning:
+  scheme: semver
+  detail: SDKs are versioned with semantic versioning (PyPI 0.11.x, npm 0.7.x).
+error_envelope:
+  documented: false
+notes: >-
+  SuperPenguin exposes its platform through first-party Python and TypeScript
+  SDKs rather than a documented public REST API; no OpenAPI/Swagger specification
+  is published, so pagination, rate-limit signaling, and an error envelope are
+  not documented at the wire level.

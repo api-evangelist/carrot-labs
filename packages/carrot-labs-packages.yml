@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: https://superpenguin.ai/docs
+packages:
+- language: python
+  registry: pypi
+  name: superpenguin
+  url: https://pypi.org/project/superpenguin/
+  install: pip install superpenguin
+  version: 0.11.1
+  license: MIT
+  official: true
+  description: >-
+    SuperPenguin Python SDK — AI cost management, attribution, and spend
+    tracking. Wraps OpenAI, Anthropic, Google Gemini, AWS Bedrock, Deepgram,
+    ElevenLabs, LiteLLM clients plus OpenAI Realtime (WebSocket voice) sessions.
+- language: javascript
+  registry: npm
+  name: "@superpenguin/js"
+  url: https://www.npmjs.com/package/@superpenguin/js
+  install: npm install @superpenguin/js
+  version: 0.7.1
+  official: true
+  description: >-
+    SuperPenguin JavaScript/TypeScript SDK for AI cost attribution across native
+    provider SDKs, Vercel AI SDK, and OpenTelemetry. Wraps OpenAI, Anthropic,
+    Google Gemini, AWS Bedrock, Deepgram, and ElevenLabs.

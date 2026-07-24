@@ -1,0 +1,61 @@
+# SuperPenguin
+
+> AI spend intelligence platform. Track, attribute, and forecast spend per request, per customer, per feature, and per prompt version across 14+ LLM, speech, and gateway providers, and tie Cursor spend to the pull requests it shipped.
+
+SuperPenguin is an AI spend intelligence tool for teams building with large language models (LLMs) and voice AI. It provides per-request cost attribution, multi-provider dashboards, prompt version analytics, engineering ROI (Cursor PR cost attribution), and billing reconciliation.
+
+## What SuperPenguin Does
+
+- **Per-request cost tracking**: Every LLM or voice API call is logged with cost, token usage, latency, and custom metadata (customer, feature, team, environment, prompt version).
+- **Multi-provider dashboard**: Unified view of spend across supported providers including OpenAI, Anthropic, Google Gemini, AWS Bedrock, Vercel AI Gateway, Deepgram, ElevenLabs, LiveKit voice agent workflows, and LiteLLM. Daily trends, model breakdown, spend alerts (Slack, email, or Discord), and AI spend forecast (Pro plan).
+- **Cost attribution**: Slice spend by customer, feature, team, environment, prompt key, prompt version, model, provider (the integration/route that bills you), and model provider (the model's maker).
+- **Engineering ROI (Cursor PR costs)**: Connect Cursor and GitHub to tie every dollar of Cursor spend to the pull requests it produced, broken down by engineer and project (Pro plan).
+- **Prompt version analytics**: Compare cost and latency across prompt iterations to find the cheapest, fastest version.
+- **Billing reconciliation**: Compare SDK-estimated costs against actual provider invoices. Catch discrepancies by provider, model, or day.
+- **Python SDK**: `pip install superpenguin`. Wraps OpenAI, Anthropic, Google Gemini, AWS Bedrock, Deepgram, ElevenLabs, and LiteLLM clients, plus OpenAI Realtime API (WebSocket voice) sessions via `wrap_realtime`. No proxy required; logs cost metadata directly. Bedrock rows are priced server-side; region is auto-captured from the boto3 client.
+- **TypeScript SDK**: `npm install @superpenguin/js`. Wraps OpenAI, Anthropic, Google Gemini, AWS Bedrock (`@aws-sdk/client-bedrock-runtime`), Deepgram, and ElevenLabs clients, plus OpenAI Realtime API (WebSocket voice) sessions via `wrapRealtime`, Vercel AI SDK helpers, and OpenTelemetry span ingestion.
+
+## How It Works
+
+1. Install the SuperPenguin SDK (`pip install superpenguin` or `npm install @superpenguin/js`)
+2. Wrap your LLM or voice client with `sp.wrap(client)` (Python), `wrap(client)` (TypeScript), or the Vercel AI SDK helpers.
+3. Attach optional metadata (customer_id, feature, team, prompt_key, prompt_version)
+4. Open the SuperPenguin dashboard to see per-request cost data
+
+The SDKs are lightweight wrappers around native provider clients. Your API calls go directly to the provider; the SDK only captures cost-relevant metadata (tokens, model, latency, tags) by default. Prompt and response text are not captured unless your organization opts in from Settings (Pro or Enterprise), the SDK allows capture, and the call is sampled.
+
+## Key Facts
+
+- **Privacy**: By default, no prompt or response content is stored. Only cost metadata (tokens, model, latency, tags). Pro and Enterprise orgs may opt in to sampled, encrypted, text-only capture (images and audio stripped); owners can delete captured content from Settings.
+- **Performance**: Sub-10ms non-streaming overhead, less than 5ms time-to-first-token impact on streaming, async telemetry.
+- **Providers and SDK paths**: OpenAI, Anthropic, Google Gemini, AWS Bedrock (region auto-captured; server-side pricing), Deepgram, ElevenLabs, LiveKit, Vercel AI Gateway, Vercel AI SDK, LiteLLM, Python, and TypeScript.
+- **Regional / tier pricing**: Optional `region`, `deployment_type`, and `service_tier` event fields let the server pick the right rate card (Bedrock per-region, OpenAI flex/priority, Azure data zone). See SDK docs for precedence and per-provider capture rules.
+- **Pricing**: Free up to $2K managed spend. Growth at $30/mo (up to $5K). Pro at $200/mo (up to $20K). Enterprise custom pricing.
+
+## SDK Documentation
+
+For detailed usage, API reference, and integration guides:
+
+- **Python SDK docs**: https://superpenguin.ai/docs/sdk/python.md
+- **TypeScript SDK docs**: https://superpenguin.ai/docs/sdk/typescript.md
+
+## Content and Resources
+
+SuperPenguin publishes dated posts (product releases, the newsletter, and original research) on the Blog, and evergreen guides, glossary definitions, and reference data on Learn. See the sitemap (https://superpenguin.ai/sitemap.xml) for the full, current list of articles.
+
+- Blog (releases, newsletter, research): https://superpenguin.ai/blog
+- Learn (guides, glossary, reference): https://superpenguin.ai/learn
+- Models (per-model API pricing, specs, and cost calculators): https://superpenguin.ai/models
+- Blog RSS feed: https://superpenguin.ai/blog/rss.xml
+
+## Links
+
+- Website: https://superpenguin.ai
+- Dashboard: https://app.superpenguin.ai
+- Documentation: https://superpenguin.ai/docs
+- Blog: https://superpenguin.ai/blog
+- Learn: https://superpenguin.ai/learn
+- Models (per-model pricing): https://superpenguin.ai/models
+- PyPI: https://pypi.org/project/superpenguin/
+- npm: https://www.npmjs.com/package/@superpenguin/js
+- Twitter/X: https://x.com/carrotlabs__ai

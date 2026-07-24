@@ -1,22 +1,121 @@
 aid: carrot-labs
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/carrot-labs.png
 name: Carrot Labs
-description: Carrot Labs is a company surfaced as a portfolio company of y-combinator and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Carrot Labs is the company behind SuperPenguin, an AI spend intelligence
+  platform that tracks, attributes, and forecasts spending across 14+ LLM,
+  speech, and gateway providers including OpenAI, Anthropic, Google Gemini, AWS
+  Bedrock, Vercel AI Gateway, Deepgram, ElevenLabs, LiveKit, and LiteLLM.
+  SuperPenguin provides per-request cost attribution (by customer, feature,
+  team, environment, prompt key, and prompt version), a multi-provider spend
+  dashboard, prompt version analytics, engineering ROI via Cursor pull-request
+  cost attribution, billing reconciliation against actual provider invoices, and
+  spend alerts over Slack, email, or Discord. It ships lightweight first-party
+  Python (`pip install superpenguin`) and TypeScript (`npm install
+  @superpenguin/js`) SDKs that wrap native provider clients, add sub-10ms
+  overhead, and capture cost metadata without storing prompt or response content
+  by default. Carrot Labs is a Y Combinator (Winter 2026) company based in San
+  Francisco.
 url: https://raw.githubusercontent.com/api-evangelist/carrot-labs/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - y-combinator
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Artificial Intelligence
+- FinOps
+- AIOps
+- Cost Management
+- LLM
+- Observability
+- Developer Tools
+apis:
+- name: SuperPenguin AI Spend Intelligence
+  description: >-
+    The SuperPenguin platform tracks and attributes AI spend per request, per
+    customer, per feature, and per prompt version across 14+ LLM, speech, and
+    gateway providers. Access is via first-party Python and TypeScript SDKs that
+    wrap native provider clients and stream cost metadata to the SuperPenguin
+    dashboard; authentication uses `sp-`-prefixed API keys.
+  humanURL: https://superpenguin.ai/docs
+  baseURL: https://app.superpenguin.ai
+  tags:
+  - AI Cost Management
+  - FinOps
+  - LLM Observability
+  properties:
+  - type: Documentation
+    url: https://superpenguin.ai/docs
+  - type: Authentication
+    url: authentication/carrot-labs-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: Website
+  url: https://superpenguin.ai
+- type: DeveloperPortal
+  url: https://superpenguin.ai/docs
+- type: Documentation
+  url: https://superpenguin.ai/docs
+- type: APIReference
+  url: https://superpenguin.ai/docs
+- type: GettingStarted
+  url: https://superpenguin.ai/docs
+- type: Pricing
+  url: https://superpenguin.ai/#pricing
+- type: SignUp
+  url: https://superpenguin.ai/signup
+- type: Login
+  url: https://superpenguin.ai/login
+- type: TermsOfService
+  url: https://superpenguin.ai/terms
+- type: PrivacyPolicy
+  url: https://superpenguin.ai/privacy
+- type: Blog
+  url: https://superpenguin.ai/blog
+- type: BlogRSS
+  url: https://superpenguin.ai/blog/rss.xml
+- type: Twitter
+  url: https://x.com/carrotlabs__ai
+- type: LinkedIn
+  url: https://www.linkedin.com/company/carrot-labs-ai
+- type: LLMsTxt
+  url: llms/carrot-labs-llms.txt
+- type: Packages
+  url: packages/carrot-labs-packages.yml
+- type: SDKs
+  url: packages/carrot-labs-packages.yml
+- type: Authentication
+  url: authentication/carrot-labs-authentication.yml
+- type: Conventions
+  url: conventions/carrot-labs-conventions.yml
+- type: Idempotency
+  url: conventions/carrot-labs-conventions.yml
+- type: DomainSecurity
+  url: security/carrot-labs-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
