@@ -1,0 +1,51 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://superpenguin.ai/#pricing
+sources:
+- https://superpenguin.ai/#pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+published: true
+note: Tiers gated by amount of managed AI spend; page states 'You pay on the AI spend you manage. Not
+  per seat, not per request.' Enterprise is custom-quoted.
+plan_count: 4
+currency: USD
+plans:
+- name: Free
+  price_text: $0 / mo
+  price: 0
+  currency: USD
+  period: month
+  unit: managed spend tier
+  included_quota: Up to $2K managed spend; Attribution with the SDK; Coding ROI for 1 person; PR attribution
+    for 3 merged PRs total; One View across every provider; Email support
+- name: Growth
+  price_text: $30 / mo
+  price: 30
+  currency: USD
+  period: month
+  unit: managed spend tier
+  included_quota: Up to $5K managed spend; 3 workspace members; Coding ROI for 3 people; PR attribution
+    for the latest 20 merged PRs this month; Alerts to Slack, email, or Discord; 90-day backfill and custom
+    pricing
+- name: Pro
+  price_text: $200 / mo
+  price: 200
+  currency: USD
+  period: month
+  unit: managed spend tier
+  included_quota: Up to $20K managed spend; 10 workspace members; Coding ROI for 5 people; Unlimited PR
+    attribution; End-of-month forecast
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: $20K+ managed spend; Unlimited workspace members; Coding ROI for unlimited people
